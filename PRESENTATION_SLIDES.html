@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherVibe - Project Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px;
+            animation: slideIn 0.6s ease-out;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Slide Styles */
+        .slide h1 {
+            font-size: 72px;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide h2 {
+            font-size: 56px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .slide h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .slide p {
+            font-size: 24px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .slide ul {
+            font-size: 22px;
+            margin-left: 40px;
+            line-height: 2;
+        }
+
+        .slide li {
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd60a;
+            overflow-x: auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .grid-item h3 {
+            margin-bottom: 15px;
+            color: #ffd60a;
+        }
+
+        .tech-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            font-size: 18px;
+        }
+
+        .tech-table th,
+        .tech-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-table th {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-prev {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .btn-prev:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        .btn-next {
+            background: #ffd60a;
+            color: #000;
+        }
+
+        .btn-next:hover {
+            background: #ffc300;
+            transform: translateX(5px);
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #ffd60a;
+        }
+
+        .emoji-large {
+            font-size: 60px;
+            margin-right: 20px;
+        }
+
+        .highlight {
+            color: #ffd60a;
+            font-weight: 700;
+        }
+
+        .title-slide {
+            text-align: center;
+            justify-content: center !important;
+        }
+
+        .title-slide h1 {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+
+        .title-slide p {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .title-slide .subtitle {
+            font-size: 28px;
+            opacity: 0.9;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active title-slide">
+            <div>
+                <h1>🌤️ WeatherVibe</h1>
+                <p class="subtitle">A Modern Weather Application</p>
+                <p>Project Presentation</p>
+                <p style="margin-top: 50px; font-size: 24px; opacity: 0.8;">Click "Next" to continue →</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Project Overview -->
+        <div class="slide">
+            <h2>📋 Project Overview</h2>
+            <p style="margin-top: 40px;">WeatherVibe is a <span class="highlight">modern, responsive weather application</span> built with:</p>
+            <ul style="margin-top: 40px;">
+                <li>✅ HTML5 Structure</li>
+                <li>✅ CSS3 Styling & Animations</li>
+                <li>✅ JavaScript Functionality</li>
+                <li>✅ OpenWeatherMap API Integration</li>
+                <li>✅ Modern Design Trends (Glassmorphism)</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Project Goals -->
+        <div class="slide">
+            <h2>🎯 Project Goals</h2>
+            <div style="margin-top: 50px;">
+                <div class="feature-box">
+                    <strong>Create a multi-page weather application</strong>
+                </div>
+                <div class="feature-box">
+                    <strong>Implement real-time weather data using APIs</strong>
+                </div>
+                <div class="feature-box">
+                    <strong>Design a modern, visually appealing interface</strong>
+                </div>
+                <div class="feature-box">
+                    <strong>Make it responsive and mobile-friendly</strong>
+                </div>
+                <div class="feature-box">
+                    <strong>Ensure smooth user experience with animations</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Technologies Used -->
+        <div class="slide">
+            <h2>🛠️ Technologies Used</h2>
+            <table class="tech-table" style="margin-top: 40px;">
+                <tr>
+                    <th>Technology</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td><strong>HTML5</strong></td>
+                    <td>Page Structure & Semantic Markup</td>
+                </tr>
+                <tr>
+                    <td><strong>CSS3</strong></td>
+                    <td>Styling, Animations, Gradients, Filters</td>
+                </tr>
+                <tr>
+                    <td><strong>JavaScript</strong></td>
+                    <td>Interactivity, API Integration</td>
+                </tr>
+                <tr>
+                    <td><strong>OpenWeatherMap API</strong></td>
+                    <td>Real-time Weather Data</td>
+                </tr>
+                <tr>
+                    <td><strong>Font Awesome</strong></td>
+                    <td>Icons & Visual Elements</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 5: Project Structure -->
+        <div class="slide">
+            <h2>📁 Project Structure</h2>
+            <div class="code-block" style="margin-top: 40px; font-size: 20px;">
+WeatherVibe/<br>
+├── index.html          <span class="highlight"># Landing/Home Page</span><br>
+├── weather.html        <span class="highlight"># Main Weather App</span><br>
+├── features.html       <span class="highlight"># Features Showcase</span><br>
+├── gallery.html        <span class="highlight"># City Gallery</span><br>
+└── README.md           <span class="highlight"># Documentation</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Key Feature - Gradients -->
+        <div class="slide">
+            <h2>🎨 Key Feature 1: Gradient Background</h2>
+            <div class="code-block">
+body {<br>
+&nbsp;&nbsp;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);<br>
+&nbsp;&nbsp;min-height: 100vh;<br>
+}
+            </div>
+            <p style="margin-top: 40px;"><strong>Why it matters:</strong></p>
+            <ul style="margin-top: 20px;">
+                <li>Creates modern, eye-catching visual appeal</li>
+                <li>Smooth color transition from purple to indigo</li>
+                <li>Makes the app feel premium and professional</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7: Glassmorphism -->
+        <div class="slide">
+            <h2>✨ Key Feature 2: Glassmorphism</h2>
+            <div class="code-block">
+.floating-card {<br>
+&nbsp;&nbsp;background: rgba(255, 255, 255, 0.1);<br>
+&nbsp;&nbsp;<span class="highlight">backdrop-filter: blur(20px);</span><br>
+&nbsp;&nbsp;border: 2px solid rgba(255, 255, 255, 0.2);<br>
+&nbsp;&nbsp;border-radius: 30px;<br>
+}
+            </div>
+            <p style="margin-top: 40px;"><strong>Why it matters:</strong></p>
+            <ul style="margin-top: 20px;">
+                <li>Frosted glass effect (trendy 2024-2026)</li>
+                <li>Used by Apple, Microsoft, Google</li>
+                <li>Modern and visually sophisticated</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8: Animations -->
+        <div class="slide">
+            <h2>🎬 Key Feature 3: Smooth Animations</h2>
+            <div class="code-block">
+@keyframes float {<br>
+&nbsp;&nbsp;0%, 100% { transform: translateY(0px); }<br>
+&nbsp;&nbsp;50% { transform: translateY(-20px); }<br>
+}<br>
+<br>
+animation: float 6s ease-in-out infinite;
+            </div>
+            <p style="margin-top: 40px;"><strong>Why it matters:</strong></p>
+            <ul style="margin-top: 20px;">
+                <li>Makes UI feel alive and engaging</li>
+                <li>Improves user experience</li>
+                <li>Smooth transitions enhance professionalism</li>
+            </ul>
+        </div>
+
+        <!-- Slide 9: Responsive Design -->
+        <div class="slide">
+            <h2>📱 Key Feature 4: Responsive Design</h2>
+            <div class="code-block">
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;.hero { grid-template-columns: 1fr; }<br>
+&nbsp;&nbsp;.stats { grid-template-columns: repeat(2, 1fr); }<br>
+&nbsp;&nbsp;.cta-buttons { flex-direction: column; }<br>
+}
+            </div>
+            <p style="margin-top: 40px;"><strong>Why it matters:</strong></p>
+            <ul style="margin-top: 20px;">
+                <li>Works on phones, tablets, and desktops</li>
+                <li>Flexible layouts using CSS Grid & Flexbox</li>
+                <li>Essential for modern web applications</li>
+            </ul>
+        </div>
+
+        <!-- Slide 10: API Integration -->
+        <div class="slide">
+            <h2>🌐 Key Feature 5: API Integration</h2>
+            <div class="code-block" style="font-size: 14px;">
+async function getWeather(city, apiKey) {<br>
+&nbsp;&nbsp;const response = await fetch(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`<br>
+&nbsp;&nbsp;);<br>
+&nbsp;&nbsp;const data = await response.json();<br>
+&nbsp;&nbsp;displayWeather(data);<br>
+}
+            </div>
+            <p style="margin-top: 40px;"><strong>Why it matters:</strong></p>
+            <ul style="margin-top: 20px;">
+                <li>Fetches real-time weather data</li>
+                <li>Uses async/await for smooth execution</li>
+                <li>Error handling ensures reliability</li>
+            </ul>
+        </div>
+
+        <!-- Slide 11: CSS Concepts -->
+        <div class="slide">
+            <h2>💡 CSS Concepts Used</h2>
+            <div style="margin-top: 40px;">
+                <div class="feature-box">
+                    <strong>🔳 CSS Grid</strong> - Modern layout system
+                </div>
+                <div class="feature-box">
+                    <strong>📦 Flexbox</strong> - Flexible component alignment
+                </div>
+                <div class="feature-box">
+                    <strong>🎨 Gradients</strong> - Smooth color transitions
+                </div>
+                <div class="feature-box">
+                    <strong>🎬 Keyframes</strong> - Animation control
+                </div>
+                <div class="feature-box">
+                    <strong>🔲 Backdrop Filters</strong> - Glassmorphism effects
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Color Palette -->
+        <div class="slide">
+            <h2>🎨 Design: Color Palette</h2>
+            <div style="margin-top: 50px;">
+                <table class="tech-table">
+                    <tr>
+                        <th>Color</th>
+                        <th>Usage</th>
+                        <th>Hex Code</th>
+                    </tr>
+                    <tr>
+                        <td style="color: #667eea;"><strong>Purple</strong></td>
+                        <td>Gradient Start</td>
+                        <td>#667eea</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #764ba2;"><strong>Indigo</strong></td>
+                        <td>Gradient End</td>
+                        <td>#764ba2</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #ffd60a;"><strong>Yellow</strong></td>
+                        <td>Accent & CTA</td>
+                        <td>#ffd60a</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #ffffff;"><strong>White</strong></td>
+                        <td>Text & Elements</td>
+                        <td>#ffffff</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 13: Development Process -->
+        <div class="slide">
+            <h2>🔄 Development Process</h2>
+            <div style="margin-top: 40px;">
+                <div class="feature-box">
+                    <strong>Phase 1: Planning</strong> ✓ Defined scope & features
+                </div>
+                <div class="feature-box">
+                    <strong>Phase 2: Design</strong> ✓ UI/UX & color scheme
+                </div>
+                <div class="feature-box">
+                    <strong>Phase 3: Development</strong> ✓ HTML, CSS, JavaScript
+                </div>
+                <div class="feature-box">
+                    <strong>Phase 4: Testing</strong> ✓ Multi-device validation
+                </div>
+                <div class="feature-box">
+                    <strong>Phase 5: Deployment</strong> ✓ Ready for presentation
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Key Learnings -->
+        <div class="slide">
+            <h2>🎓 Key Learnings</h2>
+            <ul style="margin-top: 40px; font-size: 20px;">
+                <li>✅ HTML5 Semantic Markup</li>
+                <li>✅ Advanced CSS (Animations, Filters, Layout)</li>
+                <li>✅ JavaScript (Functions, API Calls, Error Handling)</li>
+                <li>✅ REST API Integration</li>
+                <li>✅ Responsive Web Design</li>
+                <li>✅ Modern Design Trends</li>
+                <li>✅ Problem Solving & Debugging</li>
+            </ul>
+        </div>
+
+        <!-- Slide 15: Future Enhancements -->
+        <div class="slide">
+            <h2>🚀 Future Enhancements</h2>
+            <ul style="margin-top: 40px;">
+                <li>🌙 Dark/Light mode toggle</li>
+                <li>📊 5-day & 10-day weather forecast</li>
+                <li>📍 Geolocation auto-detection</li>
+                <li>💾 Save favorite cities locally</li>
+                <li>📊 Weather history & trends</li>
+                <li>🔔 Push notifications for alerts</li>
+                <li>🌐 Multi-language support</li>
+            </ul>
+        </div>
+
+        <!-- Slide 16: Questions -->
+        <div class="slide title-slide">
+            <div>
+                <h1>❓ Questions?</h1>
+                <p style="margin-top: 50px; font-size: 32px;">Let's discuss the project!</p>
+                <p style="margin-top: 40px; font-size: 24px; opacity: 0.8;">Thank you for watching! 🙏</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button class="btn-prev" onclick="previousSlide()">← Previous</button>
+        <button class="btn-next" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">16</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

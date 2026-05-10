@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - WeatherVibe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd60a;
+        }
+
+        .page-title {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 60px;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        .features-section {
+            margin-bottom: 60px;
+            animation: slideUp 0.6s ease-out 0.4s both;
+        }
+
+        .section-heading {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            font-size: 40px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #ffd60a;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            animation: slideUp 0.6s ease-out 0.6s both;
+        }
+
+        .tech-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .tech-badge {
+            background: rgba(255, 214, 10, 0.2);
+            border: 2px solid #ffd60a;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(255, 214, 10, 0.3);
+            transform: scale(1.05);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+            animation: slideUp 0.6s ease-out 0.8s both;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #ffd60a;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            animation: slideUp 0.6s ease-out 1s both;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #ffd60a 0%, #ffc300 100%);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 214, 10, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 214, 10, 0.5);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 36px;
+            }
+
+            .section-heading {
+                font-size: 24px;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <i class="fas fa-cloud"></i> WeatherVibe
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weather.html">App</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header -->
+        <h1 class="page-title">✨ Features That Hit Different</h1>
+        <p class="subtitle">Everything you need to stay updated on the weather vibe</p>
+
+        <!-- Features -->
+        <div class="features-section">
+            <div class="section-heading">
+                <span class="section-icon">⚡</span>
+                Core Features
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <div class="feature-title">Global Coverage</div>
+                    <p class="feature-description">Check weather for any city in 195+ countries. No geographic limits, just pure global vibes.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Lightning Fast</div>
+                    <p class="feature-description">Real-time updates in milliseconds. Your weather data loads faster than your TikTok feed.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">Aesthetic UI</div>
+                    <p class="feature-description">Modern, sleek interface designed for Gen Z. No boring stats—just pure style and substance.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Mobile First</div>
+                    <p class="feature-description">Looks fire on mobile, tablet, or desktop. Perfect responsive design on all devices.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Secure & Private</div>
+                    <p class="feature-description">Your data is encrypted. We don't sell your location to corporations. Period.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌙</div>
+                    <div class="feature-title">Dark Mode</div>
+                    <p class="feature-description">Easy on the eyes. Dark mode vibes for all your late-night weather checking.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Features -->
+        <div class="features-section">
+            <div class="section-heading">
+                <span class="section-icon">🚀</span>
+                Advanced Capabilities
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Detailed Analytics</div>
+                    <p class="feature-description">Humidity, wind speed, visibility, pressure—all the metrics you need to understand the weather.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌡️</div>
+                    <div class="feature-title">Dual Temperature</div>
+                    <p class="feature-description">Toggle between Celsius and Fahrenheit instantly. No math required.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Real-Time Sync</div>
+                    <p class="feature-description">Auto-refresh weather data. Always stays current with latest conditions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Accuracy 100%</div>
+                    <p class="feature-description">Powered by OpenWeatherMap. Professional-grade weather data for maximum accuracy.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⌨️</div>
+                    <div class="feature-title">Keyboard Shortcuts</div>
+                    <p class="feature-description">Press Enter to search. Smooth keyboard navigation for power users.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-title">Smooth Animations</div>
+                    <p class="feature-description">Buttery smooth transitions and animations. Motion design that feels premium.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">195+</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">< 100ms</div>
+                <div class="stat-label">Load Time</div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack">
+            <h2 class="tech-title">🛠️ Built With Modern Tech</h2>
+            <div class="tech-grid">
+                <div class="tech-badge">HTML5</div>
+                <div class="tech-badge">CSS3</div>
+                <div class="tech-badge">JavaScript (ES6+)</div>
+                <div class="tech-badge">Fetch API</div>
+                <div class="tech-badge">Glassmorphism</div>
+                <div class="tech-badge">Responsive Design</div>
+                <div class="tech-badge">OpenWeatherMap API</div>
+                <div class="tech-badge">Gradient Backgrounds</div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Check Your Weather Vibe? 🌤️</h2>
+            <p class="cta-subtitle">Don't miss out on accurate, real-time weather updates with style</p>
+            <a href="weather.html" class="btn">Start Now</a>
+        </div>
+    </div>
+</body>
+</html>
