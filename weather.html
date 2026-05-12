@@ -56,10 +56,42 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
 
         .nav-links a:hover {
             color: #ffd60a;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Main Content */
@@ -415,29 +447,403 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .main-card {
+                padding: 40px;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .big-temp {
+                font-size: 64px;
+            }
+
+            .city-name {
+                font-size: 28px;
+            }
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            /* Navigation */
+            nav {
+                padding: 15px 0;
+                margin-bottom: 30px;
+            }
+
+            .logo {
+                font-size: 22px;
+                gap: 8px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(102, 126, 234, 0.95);
+                backdrop-filter: blur(10px);
+                list-style: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 20px;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 16px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
             .main-card {
                 padding: 30px;
             }
 
-            .big-temp {
-                font-size: 56px;
+            .input-group {
+                margin-bottom: 20px;
             }
 
-            .city-name {
-                font-size: 24px;
+            .input-group label {
+                font-size: 12px;
+                margin-bottom: 8px;
             }
 
             .input-wrapper {
                 grid-template-columns: 1fr;
             }
 
+            input {
+                padding: 13px 18px;
+                font-size: 15px;
+            }
+
             .btn {
                 width: 100%;
+                padding: 13px 30px;
+                font-size: 15px;
+            }
+
+            .toggle-group {
+                width: 100%;
+            }
+
+            .toggle-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                flex: 1;
+            }
+
+            .weather-header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 25px;
+            }
+
+            .city-name {
+                font-size: 24px;
+                margin-bottom: 3px;
+            }
+
+            .last-updated {
+                font-size: 11px;
+            }
+
+            .big-temp {
+                font-size: 54px;
+                margin: 15px 0;
+            }
+
+            .condition {
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+
+            .feels-like {
+                font-size: 13px;
             }
 
             .weather-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 25px 15px;
+            }
+
+            .weather-box {
+                padding: 20px 15px;
+            }
+
+            .weather-box-label {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+
+            .weather-box-icon {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            .weather-box-value {
+                font-size: 24px;
+            }
+
+            .no-data {
+                padding: 40px 20px;
+            }
+
+            .no-data-emoji {
+                font-size: 48px;
+                margin-bottom: 15px;
+            }
+
+            .no-data p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            /* Navigation */
+            nav {
+                padding: 12px 0;
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                font-size: 18px;
+                gap: 6px;
+                letter-spacing: 1px;
+            }
+
+            .hamburger span {
+                width: 22px;
+                height: 2.5px;
+            }
+
+            .main-card {
+                padding: 20px;
+            }
+
+            .input-group {
+                margin-bottom: 15px;
+            }
+
+            .input-group label {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            input {
+                padding: 12px 16px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 13px;
+                letter-spacing: 0.5px;
+                border-radius: 12px;
+            }
+
+            .toggle-group {
+                width: 100%;
+                padding: 6px;
+                gap: 6px;
+            }
+
+            .toggle-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                border-radius: 10px;
+            }
+
+            .alert {
+                padding: 14px 16px;
+                font-size: 13px;
+                gap: 8px;
+            }
+
+            .loading-spinner {
+                width: 40px;
+                height: 40px;
+                border: 3px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .loading-text {
+                font-size: 13px;
+                margin-top: 12px;
+            }
+
+            .current-weather {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+                border-radius: 18px;
+            }
+
+            .weather-header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 15px;
+                gap: 5px;
+            }
+
+            .city-name {
+                font-size: 20px;
+                margin-bottom: 2px;
+            }
+
+            .last-updated {
+                font-size: 10px;
+            }
+
+            .big-temp {
+                font-size: 42px;
+                margin: 12px 0;
+            }
+
+            .condition {
+                font-size: 18px;
+                margin-bottom: 6px;
+            }
+
+            .feels-like {
+                font-size: 12px;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 20px 12px;
+                border-radius: 15px;
+            }
+
+            .weather-box {
+                padding: 16px 12px;
+                border-radius: 12px;
+            }
+
+            .weather-box-label {
+                font-size: 9px;
+                margin-bottom: 6px;
+                font-weight: 500;
+            }
+
+            .weather-box-icon {
+                font-size: 20px;
+                margin-bottom: 6px;
+            }
+
+            .weather-box-value {
+                font-size: 20px;
+            }
+
+            .weather-box:hover {
+                transform: translateY(-4px);
+            }
+
+            .no-data {
+                padding: 30px 15px;
+            }
+
+            .no-data-emoji {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .no-data p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .main-card {
+                padding: 16px;
+            }
+
+            .input-group {
+                margin-bottom: 12px;
+            }
+
+            input {
+                padding: 11px 14px;
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 11px 20px;
+                font-size: 12px;
+            }
+
+            .toggle-btn {
+                padding: 7px 12px;
+                font-size: 11px;
+            }
+
+            .big-temp {
+                font-size: 36px;
+            }
+
+            .city-name {
+                font-size: 18px;
+            }
+
+            .weather-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-box-value {
+                font-size: 18px;
             }
         }
     </style>
@@ -449,12 +855,17 @@
             <div class="logo">
                 <i class="fas fa-cloud"></i> WeatherVibe
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="weather.html">App</a></li>
                 <li><a href="features.html">Features</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
             </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
 
         <!-- Main Card -->
@@ -737,6 +1148,31 @@
             const app = new WeatherVibe();
             // Load Lucknow weather by default
             app.fetchWeatherDefault('Lucknow');
+
+            // Hamburger Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu on window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
