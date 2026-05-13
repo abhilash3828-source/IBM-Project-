@@ -10,8 +10,7 @@ weather-app-collection/
 ├── weather.html        # Main Weather App Page
 ├── features.html       # Features & Showcase Page
 ├── gallery.html        # City Gallery Page
-└── README.md           # This file
-```
+└── README.md           ```
 
 ## 🚀 Quick Start
 

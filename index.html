@@ -13,7 +13,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-/* sadfasdfsa   advance    advance   advance this is the df is the  */
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -214,7 +213,7 @@
         .floating-card {
             position: relative;
             width: 300px;
-            height: 350px;
+            height: 400px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 30px;
@@ -231,18 +230,51 @@
         .weather-emoji {
             font-size: 100px;
             margin-bottom: 20px;
+            animation: weatherPulse 3s ease-in-out infinite;
         }
 
         .temp-display {
             font-size: 56px;
             font-weight: 800;
             margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffd60a, #ffc300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .condition-text {
             font-size: 18px;
             opacity: 0.9;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .weather-details {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .detail-label {
+            opacity: 0.7;
+            font-size: 11px;
         }
 
         .float-label {
@@ -250,6 +282,12 @@
             opacity: 0.7;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        @keyframes weatherPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         @keyframes float {
@@ -381,6 +419,152 @@
             letter-spacing: 1px;
         }
 
+        /* How It Works Section */
+        .how-it-works {
+            margin-bottom: 100px;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd60a 0%, transparent 25%, transparent 75%, #ffd60a 100%);
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd60a, #ffc300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(255, 214, 10, 0.3);
+        }
+
+        .step h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .step p {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            margin-bottom: 100px;
+            animation: fadeInUp 1s ease-out 1.4s both;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .stars {
+            font-size: 20px;
+            color: #ffd60a;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd60a, #ffc300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .author-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .author-info p {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.2), rgba(255, 195, 0, 0.2));
+            border: 2px solid rgba(255, 214, 10, 0.5);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out 1.6s both;
+        }
+
+        .cta-banner h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .cta-banner p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -425,7 +609,7 @@
 
             .floating-card {
                 width: 250px;
-                height: 300px;
+                height: 350px;
             }
 
             .weather-emoji {
@@ -434,6 +618,22 @@
 
             .temp-display {
                 font-size: 48px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-banner {
+                padding: 40px 30px;
+            }
+
+            .cta-banner h2 {
+                font-size: 32px;
             }
         }
 
@@ -470,7 +670,7 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease;
-                border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 2px solid rgba(67, 24, 24, 0.1);
                 z-index: 1000;
             }
 
@@ -608,6 +808,43 @@
 
             .stat-label {
                 font-size: 12px;
+            }
+
+            /* How It Works */
+            .how-it-works {
+                margin-bottom: 60px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            /* Testimonials */
+            .testimonials {
+                margin-bottom: 60px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* CTA Banner */
+            .cta-banner {
+                padding: 30px 20px;
+                margin-bottom: 60px;
+            }
+
+            .cta-banner h2 {
+                font-size: 28px;
+            }
+
+            .cta-banner p {
+                font-size: 16px;
             }
 
             /* Footer */
@@ -831,8 +1068,23 @@
 
             <div class="hero-visual">
                 <div class="floating-card">
+                    <div class="weather-emoji">🌤️</div>
                     <div class="temp-display">24°C</div>
                     <div class="condition-text">Partly Cloudy</div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Humidity</div>
+                            <div class="detail-value">65%</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Wind</div>
+                            <div class="detail-value">12 km/h</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">UV Index</div>
+                            <div class="detail-value">4</div>
+                        </div>
+                    </div>
                     <div class="float-label">Real-Time Data</div>
                 </div>
             </div>
@@ -883,6 +1135,82 @@
                 <div class="stat-number">24/7</div>
                 <div class="stat-label">Live Data</div>
             </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2 class="section-title">How WeatherVibe Works 🚀</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Search Location</h3>
+                    <p>Type any city name or let us detect your location automatically.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Get Instant Data</h3>
+                    <p>Our API fetches real-time weather data instantly.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>View Details</h3>
+                    <p>Check temperature, humidity, wind speed, and more.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Plan Your Day</h3>
+                    <p>Make informed decisions based on accurate forecasts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2 class="section-title">What People Love About Us ❤️</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"WeatherVibe is literally the coolest weather app! The design is fire and the data is super accurate. I use it every morning!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Ayesha Khan</h4>
+                            <p>Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Finally, a weather app that doesn't look like it's from 2005. The UI is intuitive and the data updates are instant!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Raj Patel</h4>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Love the real-time updates and the beautiful interface. This is the weather app I've been waiting for!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Maya Singh</h4>
+                            <p>Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="cta-banner">
+            <h2>Ready to Experience Weather Like Never Before?</h2>
+            <p>Join thousands of users who trust WeatherVibe for their daily weather updates.</p>
+            <a href="weather.html" class="btn btn-primary">
+                <i class="fas fa-cloud-sun" style="margin-right: 10px;"></i>Start Checking Weather Now
+            </a>
         </section>
 
         <!-- Footer -->
