@@ -915,6 +915,7 @@
                             <div class="city-name" id="cityName">---</div>
                             <div class="last-updated" id="lastUpdated">---</div>
                         </div>
+                        <div style="font-size: 60px;" id="weatherEmoji">🔍</div>
                     </div>
                     <div class="big-temp">
                         <span id="temperature">--</span>°<span id="tempUnit">C</span>
@@ -988,6 +989,7 @@
                     fahrenheitBtn: document.getElementById('fahrenheitBtn'),
                     currentWeather: document.querySelector('.current-weather'),
                     weatherGrid: document.querySelector('.weather-grid'),
+                    weatherEmoji: document.getElementById('weatherEmoji'),
                 };
             }
 
@@ -1065,6 +1067,9 @@
                 this.elements.visibility.textContent = (data.visibility / 1000).toFixed(1);
                 this.elements.pressure.textContent = data.main.pressure;
 
+                // Set weather emoji based on condition
+                this.elements.weatherEmoji.textContent = this.getWeatherEmoji(data.weather[0].main);
+
                 // Apply dynamic background image based on weather condition
                 const backgroundImage = this.getWeatherBackground(data.main.temp, data.weather[0].main);
                 this.elements.currentWeather.style.backgroundImage = `url('${backgroundImage}')`;;
@@ -1105,6 +1110,49 @@
                 }
 
                 return 'cloudy.jpg'; // Default
+            }
+
+            getWeatherEmoji(condition) {
+                const conditionLower = condition.toLowerCase();
+
+                // Sunny/Clear
+                if (conditionLower.includes('clear') || conditionLower.includes('sunny')) {
+                    return '☀️';
+                }
+                // Partly Cloudy
+                if (conditionLower.includes('partly cloud')) {
+                    return '🌤️';
+                }
+                // Cloudy
+                if (conditionLower.includes('cloud') || conditionLower.includes('overcast')) {
+                    return '☁️';
+                }
+                // Rainy
+                if (conditionLower.includes('rain')) {
+                    return '🌧️';
+                }
+                // Drizzle
+                if (conditionLower.includes('drizzle')) {
+                    return '🌦️';
+                }
+                // Thunderstorm
+                if (conditionLower.includes('thunder') || conditionLower.includes('storm')) {
+                    return '⛈️';
+                }
+                // Snow
+                if (conditionLower.includes('snow')) {
+                    return '❄️';
+                }
+                // Fog
+                if (conditionLower.includes('fog') || conditionLower.includes('mist')) {
+                    return '🌫️';
+                }
+                // Wind
+                if (conditionLower.includes('wind')) {
+                    return '🌪️';
+                }
+
+                return '🌤️'; // Default emoji
             }
 
             setUnit(unit) {
